@@ -1,26 +1,37 @@
 {
-  "name": "vue-blog",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "vue": "^3.5.13"
-  },
-  "devDependencies": {
-    "@types/node": "^24.0.3",
-    "@vitejs/plugin-vue": "^5.2.3",
-    "@vue/tsconfig": "^0.7.0",
-    "sass": "^1.89.2",
-    "stylelint": "^16.21.0",
-    "stylelint-config-standard": "^38.0.0",
-    "stylelint-config-standard-scss": "^15.0.1",
-    "typescript": "~5.8.3",
-    "vite": "^6.3.5",
-    "vue-tsc": "^2.2.8"
-  }
+	"name": "vue-blog",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vue-tsc -b && vite build",
+		"preview": "vite preview",
+		"lint:ts": "eslint . --ext .ts,.tsx,.vue,.js",
+		"lint:ts:fix": "eslint . --ext .ts,.tsx,.vue,.js --fix",
+		"lint:scss": "npx stylelint \"**/*.scss\"",
+		"lint:scss:fix": "npx stylelint \"**/*.scss\" --fix"
+	},
+	"dependencies": {
+		"vue": "^3.5.13"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.29.0",
+		"@types/node": "^24.0.3",
+		"@vitejs/plugin-vue": "^5.2.3",
+		"@vue/tsconfig": "^0.7.0",
+		"eslint": "^9.29.0",
+		"eslint-plugin-import": "^2.32.0",
+		"eslint-plugin-unused-imports": "^4.1.4",
+		"eslint-plugin-vue": "^10.2.0",
+		"globals": "^16.2.0",
+		"sass": "^1.89.2",
+		"stylelint": "^16.21.0",
+		"stylelint-config-standard": "^38.0.0",
+		"stylelint-config-standard-scss": "^15.0.1",
+		"typescript": "~5.8.3",
+		"typescript-eslint": "^8.34.1",
+		"vite": "^6.3.5",
+		"vue-tsc": "^2.2.8"
+	}
 }
