@@ -1,2 +1,5 @@
-:root {
+@import './reset';
+
+html {
+	font-family: sans-serif;
 }
