@@ -10,6 +10,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     CounterFeature: typeof import('./../../features/CounterFeature.vue')['default']
     PostForm: typeof import('./../../features/PostForm/ui/PostForm.vue')['default']
+    PostItem: typeof import('./../../entities/PostItem/ui/PostItem.vue')['default']
     PostList: typeof import('./../../features/PostList/ui/PostList.vue')['default']
   }
 }

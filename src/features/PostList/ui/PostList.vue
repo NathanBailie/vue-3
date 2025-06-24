@@ -9,8 +9,7 @@ defineProps<{
 </script>
 
 <template>
-    <div :class="styles.post" v-for="post in posts" :key="post.id">
-        <p><span>Post title:</span> {{ post.title }}</p>
-        <p><span>Post description:</span> {{ post.body }}</p>
+    <div :class="styles.postList">
+        <PostItem v-for="post in posts" :key="post.id" :post="post" />
     </div>
 </template>

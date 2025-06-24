@@ -1,0 +1,15 @@
+.post {
+	width: 100%;
+	padding: 15px;
+	border: 1px solid lightpink;
+	border-radius: 15px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+
+	p {
+		span {
+			font-weight: bold;
+		}
+	}
+}

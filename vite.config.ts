@@ -14,7 +14,7 @@ export default defineConfig({
             vueTemplate: true,
         }),
         Components({
-            dirs: ['src/shared', 'src/features'],
+            dirs: ['src/shared', 'src/features', 'src/entities'],
             extensions: ['vue'],
             deep: true,
             dts: 'src/app/types/components.d.ts',
