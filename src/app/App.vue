@@ -1,10 +1,18 @@
 <script setup lang="ts">
-import CounterFeature from '@/features/CounterFeature.vue';
+import type { Post } from '@/app/stores/post-store';
+
+import { usePostStore } from '@/app/stores/post-store';
+
+const postStore = usePostStore();
+
+function handleAdd(post: Post) {
+    postStore.addPost(post);
+}
 </script>
 
 <template>
-    <h1>Welcome to My Vue App</h1>
-    <CounterFeature />
+    <div class="app">
+        <PostForm @add="handleAdd" />
+        <PostList :posts="postStore.posts" />
+    </div>
 </template>
-
-<style scoped></style>

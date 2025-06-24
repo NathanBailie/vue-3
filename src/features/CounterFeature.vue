@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia';
-
 import { useCounterStore } from '@/app/stores/counter';
 
 const counterStore = useCounterStore();
