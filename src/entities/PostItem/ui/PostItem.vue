@@ -20,6 +20,8 @@ function removePost() {
             <p><span>Post title:</span> {{ post.title }}</p>
             <p><span>Post description:</span> {{ post.body }}</p>
         </div>
-        <button :class="styles.deleteBtn" @click="removePost">Delete</button>
+        <ButtonUi :class="styles.deleteBtn" @click="removePost"
+            >Delete</ButtonUi
+        >
     </div>
 </template>
