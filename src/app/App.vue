@@ -8,11 +8,15 @@ const postStore = usePostStore();
 function handleAdd(post: Post) {
     postStore.addPost(post);
 }
+
+function handleRemove(id: number) {
+    postStore.removePost(id);
+}
 </script>
 
 <template>
     <div class="app">
         <PostForm @add="handleAdd" />
-        <PostList :posts="postStore.posts" />
+        <PostList :posts="postStore.posts" @remove="handleRemove" />
     </div>
 </template>

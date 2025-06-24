@@ -18,5 +18,8 @@ export const usePostStore = defineStore('post', {
         addPost(post: Post) {
             this.posts.push(post);
         },
+        removePost(id: number) {
+            this.posts = this.posts.filter(post => post.id !== id);
+        },
     },
 });

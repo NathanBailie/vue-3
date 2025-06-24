@@ -1,15 +1,27 @@
-.post {
+.postItem {
 	width: 100%;
 	padding: 15px;
 	border: 1px solid lightpink;
 	border-radius: 15px;
 	display: flex;
-	flex-direction: column;
-	gap: 5px;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	gap: 15px;
+}
+
+.post {
+	flex: 5 1 0%;
 
 	p {
 		span {
 			font-weight: bold;
 		}
 	}
+}
+
+.deleteBtn {
+	flex: 1 1 0%;
+	padding: 5px 15px;
+
 }
