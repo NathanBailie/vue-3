@@ -1,11 +1,23 @@
 .form {
 	width: 100%;
 	display: flex;
-	gap: 10px;
-}
+	flex-direction: column;
+	gap: 15px;
 
-.inputs {
-	display: flex;
-	flex: 1;
-	gap: 10px;
+	&_title {
+		text-align: center;
+	}
+
+	&_inputs {
+		display: flex;
+		flex: 1;
+		gap: 15px;
+		flex-direction: column;
+		margin-top: 15px;
+	}
+
+	&_button {
+		text-align: right;
+		margin-top: 15px;
+	}
 }

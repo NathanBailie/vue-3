@@ -7,6 +7,7 @@ const postStore = usePostStore();
 
 function handleAdd(post: Post) {
     postStore.addPost(post);
+    postStore.toggleModal(false);
 }
 
 function handleRemove(id: number) {
@@ -16,7 +17,9 @@ function handleRemove(id: number) {
 
 <template>
     <div class="app">
-        <PostForm @add="handleAdd" />
+        <ModalUi v-model:flag="postStore.isModalOpen">
+            <PostForm @add="handleAdd" />
+        </ModalUi>
         <PostList :posts="postStore.posts" @remove="handleRemove" />
     </div>
 </template>

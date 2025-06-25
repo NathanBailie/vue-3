@@ -3,4 +3,25 @@
 	display: flex;
 	flex-direction: column;
 	gap: 15px;
+	padding: 15px;
+
+	&_createBrn {
+		margin: 0 0 0 auto;
+	}
+
+	&_title {
+		text-align: center;
+	}
+
+	&_subtitle {
+		text-align: center;
+	}
+
+	&_message {
+		text-align: center;
+		font-size: 20px;
+		color: brown;
+		font-style: italic;
+		margin-top: 18px;
+	}
 }

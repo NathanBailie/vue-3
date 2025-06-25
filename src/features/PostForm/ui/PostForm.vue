@@ -25,11 +25,15 @@ function submit() {
 
 <template>
     <div :class="styles.form">
-        <div :class="styles.inputs">
+        <h2 :class="styles.form_title">Post creating</h2>
+
+        <div :class="styles.form_inputs">
             <InputUi v-model="title" placeholder="title" />
             <InputUi v-model="body" placeholder="description" />
         </div>
 
-        <ButtonUi @click="submit">Add post</ButtonUi>
+        <div :class="styles.form_button">
+            <ButtonUi @click="submit">Add post</ButtonUi>
+        </div>
     </div>
 </template>

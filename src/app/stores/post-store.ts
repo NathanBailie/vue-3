@@ -13,6 +13,7 @@ export const usePostStore = defineStore('post', {
             { id: 2, title: 'Post 2', body: 'Post description 2' },
             { id: 3, title: 'Post 3', body: 'Post description 3' },
         ] as Post[],
+        isModalOpen: false,
     }),
     actions: {
         addPost(post: Post) {
@@ -20,6 +21,9 @@ export const usePostStore = defineStore('post', {
         },
         removePost(id: number) {
             this.posts = this.posts.filter(post => post.id !== id);
+        },
+        toggleModal(value: boolean) {
+            this.isModalOpen = value;
         },
     },
 });
