@@ -1,6 +1,7 @@
-import { defineStore } from 'pinia';
+import { jsonApi } from '@/shared/const/api';
 
 export interface Post {
+    userId: number;
     id: number;
     title: string;
     body: string;
@@ -8,12 +9,9 @@ export interface Post {
 
 export const usePostStore = defineStore('post', {
     state: () => ({
-        posts: [
-            { id: 1, title: 'Post 1', body: 'Post description 1' },
-            { id: 2, title: 'Post 2', body: 'Post description 2' },
-            { id: 3, title: 'Post 3', body: 'Post description 3' },
-        ] as Post[],
+        posts: [] as Post[],
         isModalOpen: false,
+        arePostsLoading: false,
     }),
     actions: {
         addPost(post: Post) {
@@ -24,6 +22,22 @@ export const usePostStore = defineStore('post', {
         },
         toggleModal(value: boolean) {
             this.isModalOpen = value;
+        },
+        async fetchPosts() {
+            try {
+                this.arePostsLoading = true;
+                const { data } = await axios.get<Post[]>(
+                    `${jsonApi}?_limit=10`,
+                );
+
+                console.log(data);
+
+                this.posts = data;
+            } catch (error) {
+                console.log('Error: ', error);
+            } finally {
+                this.arePostsLoading = false;
+            }
         },
     },
 });

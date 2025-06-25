@@ -18,18 +18,32 @@ const postStore = usePostStore();
 function openModal() {
     postStore.toggleModal(true);
 }
+
+onMounted(() => {
+    postStore.fetchPosts();
+});
 </script>
 
 <template>
     <div :class="styles.postList">
         <h1 :class="styles.postList_title">Post page</h1>
+
         <div :class="styles.postList_createBrn">
             <ButtonUi @click="openModal">Create post</ButtonUi>
         </div>
 
-        <h2 :class="styles.postList_subtitle" v-if="posts.length > 0">
+        <p :class="styles.postList_loadingMsg" v-if="postStore.arePostsLoading">
+            Loading...
+        </p>
+
+        <h2
+            :class="styles.postList_subtitle"
+            v-else-if="posts.length > 0 && !postStore.arePostsLoading"
+        >
             Post list
         </h2>
+
+        <p v-else :class="styles.postList_message">There are no posts</p>
 
         <PostItem
             v-for="post in posts"
@@ -37,9 +51,5 @@ function openModal() {
             :post="post"
             @remove="emit('remove', $event)"
         />
-
-        <p v-if="posts.length === 0" :class="styles.postList_message">
-            There are no posts
-        </p>
     </div>
 </template>

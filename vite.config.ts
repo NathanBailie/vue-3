@@ -9,7 +9,13 @@ export default defineConfig({
     plugins: [
         vue(),
         AutoImport({
-            imports: ['vue', 'pinia'],
+            imports: [
+                'vue',
+                'pinia',
+                {
+                    axios: [['default', 'axios']],
+                },
+            ],
             dts: './auto-imports.d.ts',
             vueTemplate: true,
         }),
