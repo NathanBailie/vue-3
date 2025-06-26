@@ -29,6 +29,14 @@ const sortField = computed({
     set: val => postStore.setSortField(val),
 });
 
+const currentPage = computed({
+    get: () => postStore.page,
+    set: val => {
+        postStore.setPage(val);
+        postStore.fetchPosts();
+    },
+});
+
 const sortedPosts = computed(() => {
     let filtered = postStore.posts.filter(post =>
         post.title.toLowerCase().includes(postStore.searchQuery.toLowerCase()),
@@ -85,5 +93,9 @@ const sortedPosts = computed(() => {
                 @remove="emit('remove', $event)"
             />
         </TransitionGroup>
+        <PaginationUi
+            v-model="currentPage"
+            :totalPages="postStore.totalPages"
+        />
     </div>
 </template>

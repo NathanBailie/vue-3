@@ -12,6 +12,7 @@ declare module 'vue' {
     CounterFeature: typeof import('./../../features/CounterFeature.vue')['default']
     InputUi: typeof import('./../../shared/ui/InputUi/InputUi.vue')['default']
     ModalUi: typeof import('./../../shared/ui/ModalUi/ModalUi.vue')['default']
+    PaginationUi: typeof import('./../../shared/ui/PaginationUi/ui/PaginationUi.vue')['default']
     PostForm: typeof import('./../../features/PostForm/ui/PostForm.vue')['default']
     PostItem: typeof import('./../../entities/PostItem/ui/PostItem.vue')['default']
     PostList: typeof import('./../../features/PostList/ui/PostList.vue')['default']

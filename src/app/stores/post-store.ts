@@ -16,6 +16,9 @@ export const usePostStore = defineStore('post', {
         arePostsLoading: false,
         sortField: '' as sortFieldType,
         searchQuery: '' as string,
+        page: 1,
+        limit: 10,
+        totalPages: 0,
     }),
     actions: {
         addPost(post: Post) {
@@ -30,11 +33,19 @@ export const usePostStore = defineStore('post', {
         async fetchPosts() {
             try {
                 this.arePostsLoading = true;
-                const { data } = await axios.get<Post[]>(
-                    `${jsonApi}?_limit=10`,
+
+                const response = await axios.get(jsonApi, {
+                    params: {
+                        _page: this.page,
+                        _limit: this.limit,
+                    },
+                });
+
+                this.totalPages = Math.ceil(
+                    response.headers['x-total-count'] / 10,
                 );
 
-                this.posts = data;
+                this.posts = response.data;
             } catch (error) {
                 console.log('Error: ', error);
             } finally {
@@ -43,6 +54,9 @@ export const usePostStore = defineStore('post', {
         },
         setSortField(value: sortFieldType) {
             this.sortField = value;
+        },
+        setPage(value: number) {
+            this.page = value;
         },
     },
 });
