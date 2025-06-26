@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import styles from './postList.module.scss';
+import './postListTtansitions.scss';
 
 import type { Post } from '@/app/stores/post-store';
 
@@ -66,11 +67,13 @@ const sortedPosts = computed(() => {
 
         <p v-else :class="styles.postList_message">There are no posts</p>
 
-        <PostItem
-            v-for="post in sortedPosts"
-            :key="post.id"
-            :post="post"
-            @remove="emit('remove', $event)"
-        />
+        <TransitionGroup name="post-list">
+            <PostItem
+                v-for="post in sortedPosts"
+                :key="post.id"
+                :post="post"
+                @remove="emit('remove', $event)"
+            />
+        </TransitionGroup>
     </div>
 </template>
