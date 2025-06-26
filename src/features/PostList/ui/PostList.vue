@@ -30,17 +30,27 @@ const sortField = computed({
 });
 
 const sortedPosts = computed(() => {
-    if (!sortField.value) return postStore.posts;
-
-    return [...postStore.posts].sort((a, b) =>
-        a[sortField.value].localeCompare(b[sortField.value]),
+    let filtered = postStore.posts.filter(post =>
+        post.title.toLowerCase().includes(postStore.searchQuery.toLowerCase()),
     );
+
+    if (sortField.value) {
+        filtered = [...filtered].sort((a, b) =>
+            a[sortField.value].localeCompare(b[sortField.value]),
+        );
+    }
+
+    return filtered;
 });
 </script>
 
 <template>
     <div :class="styles.postList">
         <h1 :class="styles.postList_title">Post page</h1>
+        <InputUi
+            v-model="postStore.searchQuery"
+            placeholder="search by post title..."
+        />
 
         <div :class="styles.postList_createBrn">
             <ButtonUi @click="openModal">Create post</ButtonUi>

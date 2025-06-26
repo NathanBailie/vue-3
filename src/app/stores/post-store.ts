@@ -15,6 +15,7 @@ export const usePostStore = defineStore('post', {
         isModalOpen: false,
         arePostsLoading: false,
         sortField: '' as sortFieldType,
+        searchQuery: '' as string,
     }),
     actions: {
         addPost(post: Post) {
