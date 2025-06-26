@@ -7,11 +7,14 @@ export interface Post {
     body: string;
 }
 
+export type sortFieldType = 'title' | 'body' | '';
+
 export const usePostStore = defineStore('post', {
     state: () => ({
         posts: [] as Post[],
         isModalOpen: false,
         arePostsLoading: false,
+        sortField: '' as sortFieldType,
     }),
     actions: {
         addPost(post: Post) {
@@ -30,14 +33,15 @@ export const usePostStore = defineStore('post', {
                     `${jsonApi}?_limit=10`,
                 );
 
-                console.log(data);
-
                 this.posts = data;
             } catch (error) {
                 console.log('Error: ', error);
             } finally {
                 this.arePostsLoading = false;
             }
+        },
+        setSortField(value: sortFieldType) {
+            this.sortField = value;
         },
     },
 });

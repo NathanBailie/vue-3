@@ -6,7 +6,8 @@
 	padding: 15px;
 
 	&_createBrn {
-		margin: 0 0 0 auto;
+		display: flex;
+		justify-content: space-between;
 	}
 
 	&_title {

@@ -15,6 +15,7 @@ declare module 'vue' {
     PostForm: typeof import('./../../features/PostForm/ui/PostForm.vue')['default']
     PostItem: typeof import('./../../entities/PostItem/ui/PostItem.vue')['default']
     PostList: typeof import('./../../features/PostList/ui/PostList.vue')['default']
+    SelectUi: typeof import('./../../shared/ui/SelectUi/SelectUi.vue')['default']
     UiButton: typeof import('./../../shared/ui/ButtonUi/UiButton.vue')['default']
   }
 }

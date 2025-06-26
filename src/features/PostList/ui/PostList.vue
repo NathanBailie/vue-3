@@ -22,6 +22,19 @@ function openModal() {
 onMounted(() => {
     postStore.fetchPosts();
 });
+
+const sortField = computed({
+    get: () => postStore.sortField,
+    set: val => postStore.setSortField(val),
+});
+
+const sortedPosts = computed(() => {
+    if (!sortField.value) return postStore.posts;
+
+    return [...postStore.posts].sort((a, b) =>
+        a[sortField.value].localeCompare(b[sortField.value]),
+    );
+});
 </script>
 
 <template>
@@ -30,6 +43,14 @@ onMounted(() => {
 
         <div :class="styles.postList_createBrn">
             <ButtonUi @click="openModal">Create post</ButtonUi>
+            <SelectUi
+                v-model="sortField"
+                :options="[
+                    { value: 'title', label: 'title' },
+                    { value: 'body', label: 'body' },
+                ]"
+                placeholder="Sort by..."
+            />
         </div>
 
         <p :class="styles.postList_loadingMsg" v-if="postStore.arePostsLoading">
@@ -38,7 +59,7 @@ onMounted(() => {
 
         <h2
             :class="styles.postList_subtitle"
-            v-else-if="posts.length > 0 && !postStore.arePostsLoading"
+            v-else-if="sortedPosts.length > 0"
         >
             Post list
         </h2>
@@ -46,7 +67,7 @@ onMounted(() => {
         <p v-else :class="styles.postList_message">There are no posts</p>
 
         <PostItem
-            v-for="post in posts"
+            v-for="post in sortedPosts"
             :key="post.id"
             :post="post"
             @remove="emit('remove', $event)"
