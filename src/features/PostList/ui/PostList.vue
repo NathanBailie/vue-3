@@ -22,7 +22,9 @@ function openModal() {
 }
 
 onMounted(() => {
-    postStore.fetchPosts();
+    if (postStore.posts.length === 0) {
+        postStore.fetchPosts();
+    }
 
     const options = {
         rootMargin: '5px',
@@ -122,6 +124,7 @@ const sortedPosts = computed(() => {
         <PaginationUi
             v-model="currentPage"
             :totalPages="postStore.totalPages"
+            v-if="postStore.posts.length > 0"
         />
     </div>
 </template>

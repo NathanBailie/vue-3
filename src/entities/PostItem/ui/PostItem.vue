@@ -12,6 +12,12 @@ const emit = defineEmits<{
 function removePost() {
     emit('remove', props.post.id);
 }
+
+const router = useRouter();
+
+function openPost() {
+    router.push(`/posts/${props.post.id}`);
+}
 </script>
 
 <template>
@@ -21,8 +27,13 @@ function removePost() {
             <p><span>Post title:</span> {{ post.title }}</p>
             <p><span>Post description:</span> {{ post.body }}</p>
         </div>
-        <ButtonUi :class="styles.deleteBtn" @click="removePost"
-            >Delete</ButtonUi
-        >
+        <div :class="styles.buttons">
+            <ButtonUi :class="styles.deleteBtn" @click="openPost" width="75px"
+                >Open</ButtonUi
+            >
+            <ButtonUi :class="styles.deleteBtn" @click="removePost" width="75px"
+                >Delete</ButtonUi
+            >
+        </div>
     </div>
 </template>

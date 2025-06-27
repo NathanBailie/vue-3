@@ -8,6 +8,8 @@ html {
 
 .app {
 	max-width: 800px;
+	width: 800px;
+	min-width: 350px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
