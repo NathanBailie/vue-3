@@ -12,6 +12,7 @@ export default defineConfig({
             imports: [
                 'vue',
                 'pinia',
+                'vue-router',
                 {
                     axios: [['default', 'axios']],
                 },
@@ -20,7 +21,7 @@ export default defineConfig({
             vueTemplate: true,
         }),
         Components({
-            dirs: ['src/shared', 'src/features', 'src/entities'],
+            dirs: ['src/shared', 'src/features', 'src/entities', 'src/widgets'],
             extensions: ['vue'],
             deep: true,
             dts: 'src/app/types/components.d.ts',
