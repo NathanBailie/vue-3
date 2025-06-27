@@ -7,7 +7,7 @@ export interface Post {
     body: string;
 }
 
-export type sortFieldType = 'title' | 'body' | '';
+export type sortFieldType = 'title' | 'body';
 
 export const usePostStore = defineStore('post', {
     state: () => ({
@@ -50,6 +50,26 @@ export const usePostStore = defineStore('post', {
                 console.log('Error: ', error);
             } finally {
                 this.arePostsLoading = false;
+            }
+        },
+        async loadMorePosts() {
+            try {
+                this.page += 1;
+
+                const response = await axios.get(jsonApi, {
+                    params: {
+                        _page: this.page,
+                        _limit: this.limit,
+                    },
+                });
+
+                this.totalPages = Math.ceil(
+                    response.headers['x-total-count'] / 10,
+                );
+
+                this.posts = [...this.posts, ...response.data];
+            } catch (error) {
+                console.log('Error: ', error);
             }
         },
         setSortField(value: sortFieldType) {

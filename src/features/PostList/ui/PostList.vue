@@ -15,6 +15,7 @@ const emit = defineEmits<{
 }>();
 
 const postStore = usePostStore();
+const observerRef = useTemplateRef('observer');
 
 function openModal() {
     postStore.toggleModal(true);
@@ -22,6 +23,28 @@ function openModal() {
 
 onMounted(() => {
     postStore.fetchPosts();
+
+    const options = {
+        rootMargin: '5px',
+        threshold: 0.5,
+    };
+
+    const callback = (
+        entries: IntersectionObserverEntry[],
+        _: IntersectionObserver,
+    ) => {
+        if (
+            entries[0].isIntersecting &&
+            postStore.page < postStore.totalPages
+        ) {
+            postStore.loadMorePosts();
+        }
+    };
+
+    const observer = new IntersectionObserver(callback, options);
+    if (observerRef.value) {
+        observer.observe(observerRef.value);
+    }
 });
 
 const sortField = computed({
@@ -93,6 +116,9 @@ const sortedPosts = computed(() => {
                 @remove="emit('remove', $event)"
             />
         </TransitionGroup>
+
+        <div ref="observer" :class="styles.postList_observer"></div>
+
         <PaginationUi
             v-model="currentPage"
             :totalPages="postStore.totalPages"
