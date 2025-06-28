@@ -9,7 +9,7 @@ export {};
 declare module 'vue' {
   export interface GlobalComponents {
     ButtonUi: typeof import('./../../shared/ui/ButtonUi/ButtonUi.vue')['default']
-    CounterFeature: typeof import('./../../features/CounterFeature.vue')['default']
+    CounterFeature: typeof import('./../../features/CounterFeat/ui/CounterFeature.vue')['default']
     InputUi: typeof import('./../../shared/ui/InputUi/InputUi.vue')['default']
     ModalUi: typeof import('./../../shared/ui/ModalUi/ModalUi.vue')['default']
     NavBar: typeof import('./../../widgets/NavBar/ui/NavBar.vue')['default']

@@ -6,6 +6,7 @@ import type { Post } from '@/app/stores/post-store';
 
 import { usePostStore } from '@/app/stores/post-store';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
+import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll';
 
 defineProps<{
     posts: Post[];
@@ -27,27 +28,12 @@ onMounted(() => {
         postStore.fetchPosts();
     }
 
-    const options = {
-        rootMargin: '5px',
-        threshold: 0.5,
-    };
-
-    const callback = (
-        entries: IntersectionObserverEntry[],
-        _: IntersectionObserver,
-    ) => {
-        if (
-            entries[0].isIntersecting &&
-            postStore.page < postStore.totalPages
-        ) {
-            postStore.loadMorePosts();
-        }
-    };
-
-    const observer = new IntersectionObserver(callback, options);
-    if (observerRef.value) {
-        observer.observe(observerRef.value);
-    }
+    useInfiniteScroll(
+        observerRef,
+        postStore.loadMorePosts,
+        postStore.page,
+        postStore.totalPages,
+    );
 });
 
 const sortField = computed({
