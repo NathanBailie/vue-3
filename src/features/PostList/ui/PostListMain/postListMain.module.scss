@@ -1,0 +1,25 @@
+.postListMain {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.subtitle {
+	text-align: center;
+}
+
+.loadingMsg {
+	text-align: center;
+	font-size: 20px;
+	color: #42426c;
+	font-style: italic;
+}
+
+.message {
+	text-align: center;
+	font-size: 20px;
+	color: brown;
+	font-style: italic;
+	margin-top: 18px;
+}
