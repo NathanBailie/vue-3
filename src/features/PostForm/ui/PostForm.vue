@@ -13,6 +13,7 @@ const emit = defineEmits<{
 function submit() {
     if (!title.value || !body.value) return;
     emit('add', {
+        userId: Date.now(),
         id: Date.now(),
         title: title.value,
         body: body.value,

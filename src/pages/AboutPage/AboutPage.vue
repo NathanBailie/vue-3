@@ -4,6 +4,6 @@ import styles from './aboutPage.module.scss';
 
 <template>
     <div :class="styles.aboutPage">
-        <h1>About page</h1>
+        <h1 :class="styles.aboutPage_title">About page</h1>
     </div>
 </template>

@@ -19,6 +19,7 @@ function handleRemove(id: number) {
 
 <template>
     <div :class="styles.postPage">
+        <h1 :class="styles.postPage_title">Post page</h1>
         <ModalUi v-model:flag="postStore.isModalOpen">
             <PostForm @add="handleAdd" />
         </ModalUi>

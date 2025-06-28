@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import styles from './postList.module.scss';
-import './postListTtansitions.scss';
 
+import './postListTtansitions.scss';
 import type { Post } from '@/app/stores/post-store';
 
 import { usePostStore } from '@/app/stores/post-store';
+import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 
 defineProps<{
     posts: Post[];
@@ -75,15 +76,17 @@ const sortedPosts = computed(() => {
 
     return filtered;
 });
+
+const { state: searchValue, debounced: debouncedSearch } = useDebounce('', 500);
+
+watch(debouncedSearch, val => {
+    postStore.searchQuery = val;
+});
 </script>
 
 <template>
     <div :class="styles.postList">
-        <h1 :class="styles.postList_title">Post page</h1>
-        <InputUi
-            v-model="postStore.searchQuery"
-            placeholder="search by post title..."
-        />
+        <InputUi v-model="searchValue" placeholder="search by post title..." />
 
         <div :class="styles.postList_createBrn">
             <ButtonUi @click="openModal">Create post</ButtonUi>

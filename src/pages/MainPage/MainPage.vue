@@ -4,6 +4,6 @@ import styles from './mainPage.module.scss';
 
 <template>
     <div :class="styles.mainPage">
-        <h1>Main page</h1>
+        <h1 :class="styles.mainPage_title">Main page</h1>
     </div>
 </template>
