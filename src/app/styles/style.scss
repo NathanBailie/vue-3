@@ -8,13 +8,12 @@ html {
 
 .app {
 	max-width: 800px;
-	width: 800px;
 	min-width: 350px;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 15px;
 	margin: 0 auto;
 	border-radius: 15px;
-
 }

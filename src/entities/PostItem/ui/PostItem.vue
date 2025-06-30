@@ -23,7 +23,6 @@ function openPost() {
 <template>
     <div :class="styles.postItem">
         <div :class="styles.post">
-            <p><span>Post id:</span> {{ post.id }}</p>
             <p><span>Post title:</span> {{ post.title }}</p>
             <p><span>Post description:</span> {{ post.body }}</p>
         </div>

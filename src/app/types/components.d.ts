@@ -17,13 +17,11 @@ declare module 'vue' {
     PostForm: typeof import('./../../features/PostForm/ui/PostForm.vue')['default']
     PostItem: typeof import('./../../entities/PostItem/ui/PostItem.vue')['default']
     PostList: typeof import('./../../features/PostList/ui/PostList.vue')['default']
-    PostListContent: typeof import('../../features/PostList/ui/PostListContent/PostListMain.vue')['default']
     PostListFooter: typeof import('./../../features/PostList/ui/PostListFooter/PostListFooter.vue')['default']
     PostListHeader: typeof import('./../../features/PostList/ui/PostListHeader/PostListHeader.vue')['default']
     PostListMain: typeof import('./../../features/PostList/ui/PostListMain/PostListMain.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SelectUi: typeof import('./../../shared/ui/SelectUi/SelectUi.vue')['default']
-    UiButton: typeof import('./../../shared/ui/ButtonUi/UiButton.vue')['default']
   }
 }
